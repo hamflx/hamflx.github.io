@@ -1,0 +1,326 @@
+<!DOCTYPE HTML>
+<html lang="zh-cmn-Hans" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>又一个 WordPress 博客的初始配置 - hamflx&#x27;s blog</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../../../../favicon.png">
+        <link rel="stylesheet" href="../../../../css/variables.css">
+        <link rel="stylesheet" href="../../../../css/general.css">
+        <link rel="stylesheet" href="../../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../../highlight.css">
+        <link rel="stylesheet" href="../../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../../../css/custom.css">
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../../../index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">文章清单</li><li class="chapter-item expanded "><a href="../../../../posts/2023/2/28/call-net-from-rust-statically.html"><strong aria-hidden="true">1.</strong> 静态链接 C# 到 Rust</a></li><li class="chapter-item expanded "><a href="../../../../posts/2022/4/26/forward-dll.html"><strong aria-hidden="true">2.</strong> 使用 Rust 编写转发 DLL</a></li><li class="chapter-item expanded "><a href="../../../../posts/2021/11/23/vite-compatibility.html"><strong aria-hidden="true">3.</strong> vite 兼容性踩坑记录</a></li><li class="chapter-item expanded "><a href="../../../../posts/2021/10/14/fe-ffmpeg.html"><strong aria-hidden="true">4.</strong> 前端通过 ffmpeg 库播放视频</a></li><li class="chapter-item expanded "><a href="../../../../posts/2021/5/15/my-wordpress-config.html" class="active"><strong aria-hidden="true">5.</strong> 又一个 WordPress 博客的初始配置</a></li><li class="chapter-item expanded "><a href="../../../../posts/2021/1/24/element-memory-leak.html"><strong aria-hidden="true">6.</strong> 记一次内存泄漏的排查过程</a></li><li class="chapter-item expanded "><a href="../../../../posts/2020/11/13/vsc-vue-intelli-sense.html"><strong aria-hidden="true">7.</strong> 增强 Vue 项目的智能感知</a></li><li class="chapter-item expanded "><a href="../../../../posts/2020/11/13/vuedraggable-usage.html"><strong aria-hidden="true">8.</strong> vuedraggable 使用问题记录</a></li><li class="chapter-item expanded "><a href="../../../../posts/2019/3/22/dst-server.html"><strong aria-hidden="true">9.</strong> 玩饥荒联机版日志</a></li><li class="chapter-item expanded "><a href="../../../../posts/2023/2/11/fetch-browser.html"><strong aria-hidden="true">10.</strong> Chrome 时代的浏览器兼容性测试</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">hamflx&#x27;s blog</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="又一个-wordpress-博客的初始配置"><a class="header" href="#又一个-wordpress-博客的初始配置">又一个 WordPress 博客的初始配置</a></h1>
+<p>站点结构：<code>nginx</code> =&gt; <code>WordPress</code></p>
+<h2 id="配置-https"><a class="header" href="#配置-https">配置 HTTPS</a></h2>
+<pre><code class="language-conf"># 生成公私钥对
+ssh-keygen ...
+
+# 生成证书申请请求
+openssl req -new -sha256 -key cert.key -subj &quot;/C=CN/ST=Anhui/L=Wuhu/O=whit/CN=hamflx.cn&quot; \
+    -reqexts SAN -config &lt;(cat /etc/pki/tls/openssl.cnf \
+    &lt;(printf &quot;[SAN]\nsubjectAltName=DNS:hamflx.cn,DNS:*.hamflx.cn&quot;)) \
+    &gt;cert.csr
+
+# 申请通配符证书
+docker run -it --rm \
+    -e DP_Id=DP_Id \
+    -e DP_Key=DP_Key \
+    -v $PWD:/acme.sh \
+    neilpang/acme.sh \
+    --signcsr \
+    --csr /acme.sh/cert.csr \
+    --dns dns_dp
+</code></pre>
+<p>强制流量从 <code>http</code> 重定向到 <code>https</code> 的 <code>nginx</code> 的配置：</p>
+<pre><code class="language-conf">server {
+  listen 80 default_server;
+  listen [::]:80 default_server;
+  server_name _;
+  return 301 https://$host$request_uri;
+}
+</code></pre>
+<h2 id="配置-http-20"><a class="header" href="#配置-http-20">配置 HTTP 2.0</a></h2>
+<pre><code class="language-conf">server {
+    listen       443 default_server ssl http2;
+    listen  [::]:443 default_server ssl http2;
+    server_name  www.hamflx.cn hamflx.cn;
+
+    ssl_certificate     /hamflx.cn/fullchain.cer;
+    ssl_certificate_key /hamflx.cn/cert.key;
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+
+        # 注意这里一定要加，不然在登录的时候会一直重定向。
+        proxy_set_header   X-Forwarded-Proto $scheme;
+
+        proxy_pass https://www.hamflx.cn;
+    }
+}
+</code></pre>
+<h2 id="配置邮箱"><a class="header" href="#配置邮箱">配置邮箱</a></h2>
+<p>这里并不使用 <code>WP-SMTP</code> 类似的插件，而是通过“<code>My Custom Functions</code>”插件来实现这个功能。这个插件与邮箱功能无关，但是可以插入代码到 <code>WordPress</code>，这里只需要写一个邮箱功能初始化的函数插入到 <code>WordPress</code> 即可。</p>
+<p>但是启用邮箱之后，激活邮件和重置密码邮件中的链接点击都无效，这是 <code>WordPress</code> 的一个 <code>BUG</code>。代码中的 <code>h_mail_filter</code> 函数即是为解决这个问题的。</p>
+<p>在开始之前你需要一个具有 <code>SMTP</code> 功能的邮件服务器用来发送邮件，如果没有可以使用 <code>QQ</code> 邮箱。</p>
+<h2 id="配置清单"><a class="header" href="#配置清单">配置清单</a></h2>
+<p>在 <code>My Custom Functions</code> 插件中的 <code>Settings</code> 页面中加入如下代码：</p>
+<pre><code class="language-php">function h_override_mail_from_name($email) {
+    return '幻梦';
+}
+
+function h_override_mail_from($email) {
+    return 'service@hamflx.cn';
+}
+
+function h_mail_filter($args) {
+    $args['message'] = preg_replace(&quot;/&lt;(.*?)&gt;/&quot;, &quot;$1&quot;, $args['message']);
+    return $args;
+}
+
+function h_mail_smtp($phpmailer) {
+    $phpmailer-&gt;IsSMTP();
+    $phpmailer-&gt;SMTPAuth = true;
+    $phpmailer-&gt;Port = 465;
+    $phpmailer-&gt;SMTPSecure = &quot;ssl&quot;;
+    $phpmailer-&gt;Host = &quot;smtp.qq.com&quot;;
+    $phpmailer-&gt;Username = &quot;service@hamflx.cn&quot;;
+    $phpmailer-&gt;Password = &quot;Your Token&quot;;
+}
+
+add_filter('wp_mail_from_name', 'h_override_mail_from_name');
+add_filter('wp_mail_from', 'h_override_mail_from');
+add_filter('wp_mail', 'h_mail_filter');
+
+add_action(&quot;phpmailer_init&quot;, &quot;h_mail_smtp&quot;);
+</code></pre>
+<h2 id="启用-qq-邮箱-smtp-功能"><a class="header" href="#启用-qq-邮箱-smtp-功能">启用 QQ 邮箱 SMTP 功能</a></h2>
+<p>若使用 <code>QQ</code> 邮箱，则需要启用 <code>QQ</code> 邮箱的 <code>SMTP</code> 功能并生成授权码（作为 <code>SMTP</code> 登录时的密码）。</p>
+<p>在 <code>QQ</code> 邮箱的设置页面中进入到“账户”选项卡，找到下图的配置，启用“<code>POP3/SMTP</code>”服务、生成授权码。</p>
+<h2 id="参考资料"><a class="header" href="#参考资料">参考资料</a></h2>
+<ul>
+<li><a href="https://leonax.net/p/6391/implement-wordpress-email-notification-myself/">自己动手实现 WordPress 的邮件通知功能</a></li>
+<li><a href="https://www.jerryzone.cn/diy-wp-email-content/">WordPress中各种邮件内容及标题的自定义</a></li>
+<li><a href="https://www.cnblogs.com/kenshinobiy/p/7441781.html">完美解决wordpress邮件链接无效的问题</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../../posts/2021/10/14/fe-ffmpeg.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../../../posts/2021/1/24/element-memory-leak.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+                <script>
+                
+                    document.body.querySelector('main').insertAdjacentHTML('beforeend', `
+                        <div id="disqus_thread"></div>
+                    `);
+                    /**
+                    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+                
+                    var disqus_config = function () {
+                    this.page.url = undefined;  // Replace PAGE_URL with your page's canonical URL variable
+                    this.page.identifier = 'posts/2021/5/15/my-wordpress-config.md'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                    };
+                
+                    (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://hamflx-blog.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                
+                <!-- Global site tag (gtag.js) - Google Analytics -->
+                <script async src="https://www.googletagmanager.com/gtag/js?id=G-8V723V89LY"></script>
+                <script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                
+                  gtag('config', 'G-8V723V89LY');
+                </script>
+                
+                <div class="icp">
+                  <a class="icp-link" href="https://beian.miit.gov.cn/" target="_blank">皖ICP备16015010号-2</a>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../../posts/2021/10/14/fe-ffmpeg.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../../../posts/2021/1/24/element-memory-leak.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../../../elasticlunr.min.js"></script>
+        <script src="../../../../mark.min.js"></script>
+        <script src="../../../../searcher.js"></script>
+
+        <script src="../../../../clipboard.min.js"></script>
+        <script src="../../../../highlight.js"></script>
+        <script src="../../../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

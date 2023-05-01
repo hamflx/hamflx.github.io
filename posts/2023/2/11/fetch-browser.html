@@ -1,0 +1,259 @@
+<!DOCTYPE HTML>
+<html lang="zh-cmn-Hans" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Chrome 时代的浏览器兼容性测试 - hamflx&#x27;s blog</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../../../../favicon.png">
+        <link rel="stylesheet" href="../../../../css/variables.css">
+        <link rel="stylesheet" href="../../../../css/general.css">
+        <link rel="stylesheet" href="../../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../../highlight.css">
+        <link rel="stylesheet" href="../../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../../../css/custom.css">
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../../../index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">文章清单</li><li class="chapter-item expanded "><a href="../../../../posts/2023/2/28/call-net-from-rust-statically.html"><strong aria-hidden="true">1.</strong> 静态链接 C# 到 Rust</a></li><li class="chapter-item expanded "><a href="../../../../posts/2022/4/26/forward-dll.html"><strong aria-hidden="true">2.</strong> 使用 Rust 编写转发 DLL</a></li><li class="chapter-item expanded "><a href="../../../../posts/2021/11/23/vite-compatibility.html"><strong aria-hidden="true">3.</strong> vite 兼容性踩坑记录</a></li><li class="chapter-item expanded "><a href="../../../../posts/2021/10/14/fe-ffmpeg.html"><strong aria-hidden="true">4.</strong> 前端通过 ffmpeg 库播放视频</a></li><li class="chapter-item expanded "><a href="../../../../posts/2021/5/15/my-wordpress-config.html"><strong aria-hidden="true">5.</strong> 又一个 WordPress 博客的初始配置</a></li><li class="chapter-item expanded "><a href="../../../../posts/2021/1/24/element-memory-leak.html"><strong aria-hidden="true">6.</strong> 记一次内存泄漏的排查过程</a></li><li class="chapter-item expanded "><a href="../../../../posts/2020/11/13/vsc-vue-intelli-sense.html"><strong aria-hidden="true">7.</strong> 增强 Vue 项目的智能感知</a></li><li class="chapter-item expanded "><a href="../../../../posts/2020/11/13/vuedraggable-usage.html"><strong aria-hidden="true">8.</strong> vuedraggable 使用问题记录</a></li><li class="chapter-item expanded "><a href="../../../../posts/2019/3/22/dst-server.html"><strong aria-hidden="true">9.</strong> 玩饥荒联机版日志</a></li><li class="chapter-item expanded "><a href="../../../../posts/2023/2/11/fetch-browser.html" class="active"><strong aria-hidden="true">10.</strong> Chrome 时代的浏览器兼容性测试</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">hamflx&#x27;s blog</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="chrome-时代的浏览器兼容性测试"><a class="header" href="#chrome-时代的浏览器兼容性测试">Chrome 时代的浏览器兼容性测试</a></h1>
+<p>对于这个标题，我想有一些人是很有疑惑的，对于 <code>IE</code> 时代来说，确实需要去研究浏览器的兼容性，但是对于浏览器中的老大 <code>Chrome</code>，我们需要考虑它的兼容性吗？</p>
+<p>就我目前做的项目，目标用户都是使用 <code>Chrome</code> 浏览器，但是仍然在工作中碰到很多关于 <code>Chrome</code> 的问题，比如：</p>
+<ul>
+<li>用户反馈你们的软件开了一天就卡的不行，有时候半天不到就会崩溃，然后你吭哧吭哧去解决内存泄漏的点，然后自己测试发现没问题，但是一上线，客户又反馈卡卡卡（浏览器内存泄漏）；</li>
+<li>用户机器上，表格的渲染有时缺一某一条边框，有时候有的边框特别粗；</li>
+<li>明明没有设置 <code>z-index</code>，或者设置了较小的 <code>z-index</code>，但是滚动到容器下面的时候，被遮住的那部分滚动条却突破了容器显示出来了；</li>
+<li>开发时没考虑 <code>API</code> 兼容性，用了 <code>replaceAll</code>，然后在用户机器上挂掉了；</li>
+<li>因为要嵌入第三方页面，考虑到 <code>Chrome</code> 变更了 <code>SameSite</code> 策略，默认为 <code>None</code>，需要兼容新旧版本的 <code>Chrome</code>；</li>
+<li><code>Chrome</code> 删除了 <code>/deep/</code> 的支持，导致项目中错误使用 <code>/deep/</code> 的地方样式崩溃；</li>
+<li><code>Chrome</code> 在某个版本删除了 <code>Event.path</code> 的支持，然后用这个的地方也都崩了。</li>
+</ul>
+<p>上述情况有些是属于 <code>bug</code>，有些是浏览器更新太快而开发人员知识没有跟上，还有些就是单纯的开发人员的失误。</p>
+<p>像 <code>Event.path</code> 实际上是一个非标准属性，在 <code>Chrome 100</code> 上还可以正常使用，在 <code>Chrome 101</code> 的时候，如果你使用这个属性，会在 <code>Issues</code> 里输出一个 <code>Deprecated Feature Used</code> 的警告。然后在 <code>Chrome 104</code> 里就不能用了。然而你高强度开发的时候，真的会在意这个警告吗？</p>
+<p>所以，浏览器的兼容性问题一直都在，只不过，从兼容 <code>IE</code> 变换为兼容老版本 <code>Chrome</code> 和兼容新版本 <code>Chrome</code>，以及兼容特定版本 <code>Chrome</code>。</p>
+<p>因此，你可能会需要频繁的下载不同版本的 <code>Chrome</code> 来做各种兼容性测试，这之前对我来说是个比较麻烦的事，我不喜欢通过第三方网站下载的安装包，通过官方 <code>Chromium</code> 给出的方法又太麻烦。</p>
+<p>后来无意间看到这个仓库：<a href="https://github.com/google/fetchchromium">google/fetchchromium</a>，但是这个工具需要提供 <code>revision</code>，不能通过版本号下载，然后我就自己搞了一个 <a href="https://github.com/hamflx/fetchbrowser">hamflx/fetchbrowser</a>，可以通过给定版本号下载特定的 <code>Chromium</code> 浏览器，另外，也支持下载 <code>Firefox</code>。</p>
+<h2 id="fetchbrowser"><a class="header" href="#fetchbrowser">fetchbrowser</a></h2>
+<p>仓库地址：<a href="https://github.com/hamflx/fetchbrowser">https://github.com/hamflx/fetchbrowser</a>，欢迎 <code>star</code> (❁´◡`❁)。</p>
+<p>安装方式：</p>
+<pre><code class="language-powershell">irm https://raw.githubusercontent.com/hamflx/fetchbrowser/master/install.ps1 | iex
+</code></pre>
+<p>下载 <code>Chromium 98</code>：</p>
+<pre><code class="language-powershell">fb 98
+</code></pre>
+<p><strong>注意：在特定平台第一次下载 <code>Chromium</code> 会比较慢，因为会联机查找版本信息，后续会使用缓存的数据。</strong></p>
+<p>下载 <code>Chromium 109.0.5414.120</code>：</p>
+<pre><code class="language-powershell">fb 109.0.5414.120
+</code></pre>
+<p>下载 <code>Firefox 98</code>：</p>
+<pre><code class="language-powershell">fb --firefox 98
+</code></pre>
+<p>对 <code>Firefox</code> 的支持可能会有问题，因为 <code>Firefox</code> 官方只提供了安装包的安装形式，这里是下载了官方的安装包后解压实现的。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../../posts/2019/3/22/dst-server.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+                <script>
+                
+                    document.body.querySelector('main').insertAdjacentHTML('beforeend', `
+                        <div id="disqus_thread"></div>
+                    `);
+                    /**
+                    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+                
+                    var disqus_config = function () {
+                    this.page.url = undefined;  // Replace PAGE_URL with your page's canonical URL variable
+                    this.page.identifier = 'posts/2023/2/11/fetch-browser.md'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                    };
+                
+                    (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://hamflx-blog.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                
+                <!-- Global site tag (gtag.js) - Google Analytics -->
+                <script async src="https://www.googletagmanager.com/gtag/js?id=G-8V723V89LY"></script>
+                <script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                
+                  gtag('config', 'G-8V723V89LY');
+                </script>
+                
+                <div class="icp">
+                  <a class="icp-link" href="https://beian.miit.gov.cn/" target="_blank">皖ICP备16015010号-2</a>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../../posts/2019/3/22/dst-server.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../../../elasticlunr.min.js"></script>
+        <script src="../../../../mark.min.js"></script>
+        <script src="../../../../searcher.js"></script>
+
+        <script src="../../../../clipboard.min.js"></script>
+        <script src="../../../../highlight.js"></script>
+        <script src="../../../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
